@@ -1,5 +1,7 @@
 <?php
 require 'config.php';
+$uri=$_SERVER['REQUEST_URI'];
+
 
 function fstr($data_array){
   global $file_string;
@@ -10,6 +12,25 @@ function fstr($data_array){
   }
   echo $file_string;
   //echo 'fstr';
+}
+
+function params(){
+global $uri;
+$pararray=array_values(array_filter(explode('/',$uri)));
+if (!empty($pararray)){
+	return $pararray;
+}
+else
+{
+	echo 'No parameters found';
+}
+
+}
+
+function preformat($toshow){
+	echo '<pre>';
+	print_r ($toshow);
+	echo '</pre>';
 }
 
 
