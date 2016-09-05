@@ -6,6 +6,10 @@ echo "<br/>";
 echo $uri;
 
 preformat(params());
+load_ctrl('default_ctrl');
+$ctrl1=new default_ctrl;
+
+
 
 
 

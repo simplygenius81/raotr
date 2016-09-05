@@ -1,5 +1,9 @@
 <?php
 require 'config.php';
+require 'libraries/controller.php';
+require 'libraries/model.php';
+require 'libraries/view.php';
+
 $uri=$_SERVER['REQUEST_URI'];
 
 
@@ -15,15 +19,15 @@ function fstr($data_array){
 }
 
 function params(){
-global $uri;
-$pararray=array_values(array_filter(explode('/',$uri)));
-if (!empty($pararray)){
-	return $pararray;
-}
-else
-{
-	echo 'No parameters found';
-}
+  global $uri;
+  $pararray=array_values(array_filter(explode('/',$uri)));
+  if (!empty($pararray)){
+  	return $pararray;
+  }
+  else
+  {
+  	echo 'No parameters found';
+  }
 
 }
 
@@ -33,5 +37,12 @@ function preformat($toshow){
 	echo '</pre>';
 }
 
+
+function load_ctrl($controller){
+  require '/apps/main/controllers/'.$controller.'.php';
+}
+function load_view($view_name){
+  require '/apps/main/views/'.$view_name.'.php'; 
+}
 
  ?>
